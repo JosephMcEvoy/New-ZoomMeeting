@@ -744,7 +744,7 @@ function New-ZoomMeeting {
             }
             
             if ($PSBoundParameters.ContainsKey('WeeklyDays')) {
-                $WeeklyDays[$WeeklyDays.IndexOf($_)] | ForEach-Object {
+                $WeeklyDays | ForEach-Object {
                     #Loops through each day and changes it because this parameter is an array
                     $WeeklyDays[$WeeklyDays.IndexOf($_)] = switch ($_) {
                         'Sunday'    { 1 }
