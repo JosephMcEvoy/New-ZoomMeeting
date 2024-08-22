@@ -490,7 +490,7 @@ function Update-ZoomMeeting {
         'cn_meeting'              = 'CNMeeting'
         'in_meeting'              = 'INMeeting'
         'join_before_host'        = 'JoinBeforeHost'
-        'mute_upon_entry'         = 'Mutentry'
+        'mute_upon_entry'         = 'MuteUponEntry'
         'watermark'               = 'Watermark'
         'use_pmi'                 = 'UsePMI'
         'approval_type'           = 'ApprovalType'
