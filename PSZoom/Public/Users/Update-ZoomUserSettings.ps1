@@ -235,6 +235,9 @@ Webinar capacity can be 100, 500, 1000, 3000, 5000 or 10000, depending on if the
 .PARAMETER ZoomPhone 
 Zoom phone feature.
 
+.PARAMETER RevenueAccelerator 
+Zoom phone feature.
+
 .PARAMETER CallOut 
 Call Out.
 
@@ -259,7 +262,7 @@ Update-ZoomUserSettings -UserId 'dvader@thesith.com' -JoinBeforeHost $True
 #>
 
 function Update-ZoomUserSettings {    
-    [CmdletBinding(SupportsShouldProcess = $True)]
+    [CmdletBinding()]
     Param(
         [Parameter(
             Mandatory = $True,
@@ -767,6 +770,10 @@ function Update-ZoomUserSettings {
         [Alias('zoom_phone')]
         [bool]$ZoomPhone, 
 
+        [Alias('zoom_revenue_accelerator')]
+        [Alias('ZRA')]
+        [bool]$RevenueAccelerator, 
+
 
         # tsp
         [Parameter(
@@ -889,6 +896,8 @@ function Update-ZoomUserSettings {
                 'webinar'                = 'Webinar'
                 'webinar_capacity'       = 'WebinarCapacity'
                 'zoom_phone'             = 'ZoomPhone'
+                'zoom_revenue_accelerator'             = 'RevenueAccelerator'
+
             }
 
             $tsp = @{
@@ -944,7 +953,7 @@ function Update-ZoomUserSettings {
 
             $requestBody = $requestBody | ConvertTo-Json
 
-            if ($pscmdlet.ShouldProcess($user,'Update')) {
+            if ($pscmdlet.ShouldProcess) {
                 $response = Invoke-ZoomRestMethod -Uri $request.Uri -Body $requestBody -Method PATCH
 
                 if (-not $PassThru) {
